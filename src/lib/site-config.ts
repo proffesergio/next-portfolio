@@ -1,0 +1,36 @@
+import { env } from '@/env.mjs';
+
+export const siteConfig = {
+  title: 'Hossain Billal | Full-stack Developer',
+  description:
+    "Hello, I'm Billal. I am Full-stack developer from Bangladesh. I enjoy building sites and apps. My focus is Python, NodeJS, React (Next.js).",
+  keywords: [
+    'Hossain Billal',
+    'Front-end developer',
+    'Bangladesh',
+    'Python',
+    'Node JS',
+    'Typescript',
+    'Django',
+    'Git',
+    'React',
+    'Next.js',
+    'Web development',
+    'Front-end',
+    'UI/UX',
+    'Responsive design',
+    'JavaScript',
+    'HTML',
+    'CSS',
+    'Portfolio',
+    'Projects',
+    'Website',
+    'Web applications',
+    'Developer',
+    'Code',
+    'Programming',
+    'Tech enthusiast',
+  ],
+  url: env.SITE_URL || 'https://example.com',
+  googleSiteVerificationId: env.GOOGLE_SITE_VERIFICATION_ID || '',
+};
