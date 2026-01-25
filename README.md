@@ -4,7 +4,7 @@ My personal portfolio website built using Next.js, Tailwind CSS and Framer-motio
 
 ## 📍 Live
 
-Link to the live version: [https://proffesergio.github.io/next-portfolio/](https://proffesergio.github.io/next-portfolio/)
+Link to the live version: [https://next-portfolio-ruby-nine.vercel.app/](https://next-portfolio-ruby-nine.vercel.app/)
 
 ## 💾 Installation
 
