@@ -109,18 +109,19 @@ export const Project = ({ project, index }: ProjectProps) => {
           </div>
 
           {/* Action Button */}
-          {project.links.preview && project.links.preview !== '#' && (
-            <motion.a
-              href={project.links.preview}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ x: 4 }}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300"
-            >
-              Visit Project
-              <span>→</span>
-            </motion.a>
-          )}
+          {project.links.preview &&
+            (project.links.preview as string) !== '#' && (
+              <motion.a
+                href={project.links.preview}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ x: 4 }}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300"
+              >
+                Visit Project
+                <span>→</span>
+              </motion.a>
+            )}
         </div>
 
         {/* Decorative Border Glow */}
