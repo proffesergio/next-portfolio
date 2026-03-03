@@ -5,26 +5,13 @@ import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 export const links = [
-  {
-    name: 'Home',
-    hash: '#home',
-  },
-  {
-    name: 'About',
-    hash: '#about',
-  },
-  {
-    name: 'Experience',
-    hash: '#experience',
-  },
-  {
-    name: 'Projects',
-    hash: '#projects',
-  },
-  {
-    name: 'Contact',
-    hash: '#contact',
-  },
+  { name: 'Home', hash: '#home' },
+  { name: 'About', hash: '#about' },
+  { name: 'Experience', hash: '#experience' },
+  { name: 'Websites', hash: '#websites' },
+  { name: 'Static Designs', hash: '#static-designs' },
+  { name: 'Motion Graphics', hash: '#motion-graphics' },
+  { name: 'Contact', hash: '#contact' },
 ] as const;
 
 export const projectsData = [
@@ -35,6 +22,17 @@ export const projectsData = [
     technologies: ['OpenCart3 CMS', 'PHP', 'HTML5', 'CSS3', 'MySQL'],
     links: {
       preview: 'https://potakait.com',
+      github: 'https://github.com/proffesergio',
+      githubApi: 'https://github.com/proffesergio',
+    },
+  },
+  {
+    image: '/images/comfortseatbd.png',
+    title: 'Furniture E-commerce Website',
+    description: 'A full-stack e-commerce website created using Wordpress CMS',
+    technologies: ['Wordpress CMS', 'PHP', 'HTML5', 'CSS3', 'MySQL'],
+    links: {
+      preview: 'https://comfortseatbd.com',
       github: 'https://github.com/proffesergio',
       githubApi: 'https://github.com/proffesergio',
     },
@@ -64,7 +62,7 @@ export const projectsData = [
   },
   {
     image: '/images/portfolio.png',
-    title: 'Modern Portfolio Site',
+    title: 'Modern Creative Portfolio',
     description:
       'Fully responsible modern portfolio site with the latest technologies like Next JS, Tailwind CSS, and Framer Motion',
     technologies: [
@@ -75,9 +73,9 @@ export const projectsData = [
       'React',
     ],
     links: {
-      preview: 'https://proffesergio.github.io/portfolio',
-      github: 'https://github.com/proffesergio/portfolio',
-      githubApi: 'https://github.com/proffesergio/portfolio',
+      preview: 'https://tanvirvisuals.com',
+      github: 'https://github.com/proffesergio/next-portfolio',
+      githubApi: 'https://github.com/proffesergio/next-portfolio',
     },
   },
 ] as const;
@@ -274,5 +272,97 @@ export const skillsData2 = [
     name: 'Wordpress',
     level: 80,
     icon: '/skills/wordpress.png',
+  },
+] as const;
+
+export const motionGraphicsData = [
+  {
+    title: 'Motion Reel 1',
+    description: 'Dynamic brand animation with kinetic typography.',
+    video: '/videos/motion-1.mp4',
+    technologies: ['After Effects', 'Premiere Pro'],
+    links: { preview: '#' },
+    category: 'Logo Animation',
+  },
+  {
+    title: 'Motion Reel 2',
+    description: 'Product showcase with particle effects.',
+    video: '/videos/motion-2.mp4',
+    technologies: ['After Effects', 'Illustrator'],
+    links: { preview: '#' },
+    category: 'Marketing',
+  },
+  {
+    title: 'Motion Reel 3',
+    description: 'Social media motion graphics package.',
+    video: '/videos/motion-3.mp4',
+    technologies: ['After Effects', 'Premiere Pro'],
+    links: { preview: '#' },
+    category: 'Social Ads',
+  },
+  {
+    title: 'Motion Reel 4',
+    description: 'Explainer animation with character motion.',
+    video: '/videos/motion-4.mp4',
+    technologies: ['After Effects'],
+    links: { preview: '#' },
+    category: 'Marketing',
+  },
+  {
+    title: 'Motion Reel 5',
+    description: 'Event promo reel with animated overlays.',
+    video: '/videos/motion-5.mp4',
+    technologies: ['Premiere Pro', 'After Effects'],
+    links: { preview: '#' },
+    category: 'Reels/Shorts',
+  },
+  {
+    title: 'Motion Reel 6',
+    description: 'Abstract visual loop for digital display.',
+    video: '/videos/motion-6.mp4',
+    technologies: ['After Effects'],
+    links: { preview: '#' },
+    category: 'Reels/Shorts',
+  },
+] as const;
+
+export const graphicDesignsData = [
+  {
+    title: 'SYS Brand Identity – Part 1',
+    description: 'Corporate brand identity with logo system and color palette.',
+    image: '/SYS-3.jpg',
+    category: 'Branding',
+  },
+  {
+    title: 'SYS Brand Identity – Part 2',
+    description: 'Extended brand collateral and stationery system.',
+    image: '/SYS-8.jpg',
+    category: 'Branding',
+  },
+  {
+    title: 'SYS Brand Identity – Part 3',
+    description:
+      'Brand guidelines and application examples across print media.',
+    image: '/SYS-11.jpg',
+    category: 'Branding',
+  },
+  {
+    title: 'Study Abroad Program',
+    description:
+      'Print and digital marketing material for a study abroad campaign.',
+    image: '/study-abroad.jpg',
+    category: 'Print',
+  },
+  {
+    title: 'China Visa Document Design',
+    description: 'Document layout and typographic design for visa application.',
+    image: '/visa-cn.jpg',
+    category: 'Document',
+  },
+  {
+    title: 'Malaysia Visa Document',
+    description: 'Document layout and typographic design for visa application.',
+    image: '/visa-malay.jpg',
+    category: 'Document',
   },
 ] as const;

@@ -10,7 +10,7 @@ import { experiencesData } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
 export const Experience = () => {
-  const { ref: sectionRef } = useSectionInView('Experience');
+  const { ref: sectionRef } = useSectionInView('Experience', 0.35);
 
   return (
     <section
