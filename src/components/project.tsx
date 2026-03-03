@@ -45,7 +45,7 @@ export const Project = ({ project, index }: ProjectProps) => {
           <span className="size-3 rounded-full bg-green-500/80" />
           <div className="ml-2 flex flex-1 items-center rounded-md bg-gray-700 px-3 py-1">
             <span className="truncate text-[10px] text-gray-400">
-              {project.links.preview !== '#'
+              {(project.links.preview as string) !== '#'
                 ? project.links.preview.replace(/^https?:\/\//, '')
                 : 'localhost:3000'}
             </span>
@@ -58,7 +58,7 @@ export const Project = ({ project, index }: ProjectProps) => {
             src={project.image}
             alt={project.title}
             fill
-            className="group-hover:scale-110 object-cover transition-transform duration-500"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
@@ -109,7 +109,7 @@ export const Project = ({ project, index }: ProjectProps) => {
           </div>
 
           {/* Action Button */}
-          {project.links.preview && project.links.preview !== '#' && (
+          {project.links.preview && (project.links.preview as string) !== '#' && (
             <motion.a
               href={project.links.preview}
               target="_blank"
