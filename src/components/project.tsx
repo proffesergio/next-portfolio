@@ -58,7 +58,7 @@ export const Project = ({ project, index }: ProjectProps) => {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="group-hover:scale-110 object-cover transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
@@ -109,7 +109,7 @@ export const Project = ({ project, index }: ProjectProps) => {
           </div>
 
           {/* Action Button */}
-          {project.links.preview && (project.links.preview as string) !== '#' && (
+          {project.links.preview && project.links.preview !== '#' && (
             <motion.a
               href={project.links.preview}
               target="_blank"
