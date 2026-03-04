@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 
 import { PropsWithChildren } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 
 import { ActiveSectionProvider } from '@/components/active-section-provider';
@@ -20,9 +21,9 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
   robots: { index: true, follow: true },
   icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
+    icon: '/favicon/whitefav/favicon.ico',
+    shortcut: '/favicon/whitefav/favicon-16x16.png',
+    apple: '/favicon/whitefav/apple-touch-icon.png',
   },
   verification: {
     google: siteConfig.googleSiteVerificationId,
@@ -36,6 +37,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <ThemeProvider attribute="class">
           <ActiveSectionProvider>
             {children}
+            <Analytics />
             <Toaster position="bottom-left" />
           </ActiveSectionProvider>
         </ThemeProvider>
