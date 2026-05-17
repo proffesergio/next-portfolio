@@ -45,6 +45,26 @@ export const projectsData = [
     },
   },
   {
+    image: '/images/atharnurtravels.png',
+    title: 'Travel Agency Website',
+    description:
+      'A travel agency website created using Next.js, Typescript and Tailwind CSS',
+    technologies: [
+      'Next.js',
+      'Typescript',
+      'Tailwind CSS',
+      'React',
+      'Framer Motion',
+      'HTML5',
+      'CSS3',
+    ],
+    links: {
+      preview: 'https://atharnurtravels.com',
+      github: 'https://github.com/proffesergio/an-travel-agency.git',
+      githubApi: 'https://github.com/proffesergio',
+    },
+  },
+  {
     image: '/images/portfolio.png',
     title: 'Modern Creative Portfolio',
     description:
