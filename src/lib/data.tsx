@@ -16,6 +16,46 @@ export const links = [
 
 export const projectsData = [
   {
+    image: '/images/bornolab.png',
+    title: 'বাংলা Type & Document Suite',
+    description:
+      'Bijoy to Unicode converter, premium Bangla fonts, fancy text styler, PDF to DOCX translator, PDF splitter and merger, software store — fast in your browser, with n8n workflows for heavy print jobs.',
+    technologies: [
+      'Next JS',
+      'Typescript',
+      'Framer Motion',
+      'Tailwind CSS',
+      'Python Fast API',
+      'PostgreSQL',
+      'n8n',
+    ],
+    links: {
+      preview: 'https://bornolab.vercel.app',
+      github: 'https://github.com/proffesergio/bornolab.git',
+      githubApi: 'https://github.com/proffesergio',
+    },
+  },
+  {
+    image: '/images/earnloop.png',
+    title: 'Find a real opening. Follow it through to proof',
+    description:
+      'EarnLoop curates remote jobs, gigs, scholarships and work routes — each external listing checked against its official source, with a step-by-step checklist anyone can follow.',
+    technologies: [
+      'Next JS',
+      'Typescript',
+      'Framer Motion',
+      'Tailwind CSS',
+      'Python Fast API',
+      'PostgreSQL',
+      'n8n',
+    ],
+    links: {
+      preview: 'https://earnloop-kappa.vercel.app',
+      github: 'https://github.com/proffesergio/earnloop.git',
+      githubApi: 'https://github.com/proffesergio',
+    },
+  },
+  {
     image: '/images/potakawebss.png',
     title: 'E-commerce Website',
     description: 'A full-stack e-commerce website built with OpenCart3 CMS',
