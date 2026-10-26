@@ -4,7 +4,16 @@ My personal portfolio website built using Next.js, Tailwind CSS and Framer-motio
 
 ## 📍 Live
 
-Link to the live version: [https://next-portfolio-ruby-nine.vercel.app/](https://next-portfolio-ruby-nine.vercel.app/)
+Live portfolio: [billsbro.vercel.app](https://billsbro.vercel.app/)
+
+The portfolio preserves its animated particle background and card galleries,
+with responsive navigation, project search and filters, and accessible previews.
+Project content and deployment notes live in `src/lib/project-data.ts`; original
+creative work and experience content live in `src/lib/data.tsx`.
+
+New project screenshots are stored in `public/images/projects/` as WebP files.
+Use real page captures, and distinguish live sites, demos, sign-in-only projects,
+and repositories without a verified deployment.
 
 ## 💾 Installation
 

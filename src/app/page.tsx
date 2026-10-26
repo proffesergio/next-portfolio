@@ -7,27 +7,36 @@ import { Header } from '@/components/header';
 import { Intro } from '@/components/intro';
 import { MotionGraphics } from '@/components/motion-graphics';
 import { Projects } from '@/components/projects';
-import { SectionDivider } from '@/components/section-divider';
-import { ThemeToggle } from '@/components/theme-toggle';
 
-const HomePage = async () => {
+export default function HomePage() {
   return (
     <>
-      <div className="container flex flex-col items-center">
-        <Header />
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <Header />
+      <main id="main">
         <Intro />
-        <SectionDivider />
-        <About />
-        <Experience />
-        <Projects />
-        <GraphicDesigns />
-        <MotionGraphics />
-        <Contact />
-        <Footer />
-      </div>
-      <ThemeToggle className="bg-background hidden sm:fixed sm:bottom-8 sm:right-8 sm:flex" />
+        <div className="site-shell">
+          <Projects />
+          <div className="about-experience">
+            <About />
+            <Experience />
+          </div>
+          <div className="creative-intro">
+            <span className="eyebrow">Beyond the browser</span>
+            <p>
+              Same curiosity.
+              <br />
+              <span className="gradient-text">A different canvas.</span>
+            </p>
+          </div>
+          <GraphicDesigns />
+          <MotionGraphics />
+          <Contact />
+        </div>
+      </main>
+      <Footer />
     </>
   );
-};
-
-export default HomePage;
+}

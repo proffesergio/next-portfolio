@@ -1,140 +1,171 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Eye } from 'lucide-react';
+import { CSSProperties, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight, Expand, Github } from 'lucide-react';
 import Image from 'next/image';
 
-import { ImageModal } from '@/components/image-modal';
-import { projectsData } from '@/lib/data';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/components/dialog';
+import { PortfolioProject } from '@/lib/project-data';
 
-interface ProjectProps {
-  project: (typeof projectsData)[number];
-  index: number;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Project = ({ project, index }: ProjectProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
-  };
+export const Project = ({ project }: { project: PortfolioProject }) => {
+  const [open, setOpen] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const hasImage = project.image && !imageFailed;
 
   return (
     <>
-      <motion.div
-        variants={itemVariants}
-        className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-950 shadow-lg transition-all duration-300 hover:border-gray-600 hover:shadow-2xl hover:shadow-blue-500/20"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+      <motion.article
+        layout={!reducedMotion}
+        initial={{ opacity: 0, y: reducedMotion ? 0 : 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.4 }}
+        whileHover={reducedMotion ? {} : { y: -5 }}
+        className={`project-card ${project.featured ? 'featured' : ''}`}
+        style={{ '--project-color': project.color } as CSSProperties}
+        data-project={project.id}
       >
-        {/* Browser Chrome Bar */}
-        <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
-          <span className="size-3 rounded-full bg-red-500/80" />
-          <span className="size-3 rounded-full bg-yellow-400/80" />
-          <span className="size-3 rounded-full bg-green-500/80" />
-          <div className="ml-2 flex flex-1 items-center rounded-md bg-gray-700 px-3 py-1">
-            <span className="truncate text-[10px] text-gray-400">
-              {(project.links.preview as string) !== '#'
-                ? project.links.preview.replace(/^https?:\/\//, '')
-                : 'localhost:3000'}
+        <button
+          className="project-preview"
+          onClick={() => setOpen(true)}
+          aria-label={`View ${project.title} project details`}
+        >
+          {hasImage ? (
+            <Image
+              src={project.image!}
+              alt={`${project.title} website preview`}
+              fill
+              sizes={
+                project.featured
+                  ? '(max-width: 768px) 100vw, 660px'
+                  : '(max-width: 520px) 100vw, (max-width: 1024px) 50vw, 380px'
+              }
+              onError={() => setImageFailed(true)}
+            />
+          ) : (
+            <div className="project-artwork">
+              <span>{project.category}</span>
+              <strong>{project.title}</strong>
+              <small>{project.technologies.slice(0, 3).join(' / ')}</small>
+            </div>
+          )}
+          <span className="preview-open">
+            <Expand size={12} /> Explore project
+          </span>
+        </button>
+        <div className="project-content">
+          <div className="project-meta">
+            <span>{project.category}</span>
+            <span
+              className="project-status"
+              data-live={project.status === 'Live site'}
+            >
+              {project.status}
             </span>
           </div>
-        </div>
-
-        {/* Screenshot Area */}
-        <div className="relative h-48 w-full overflow-hidden bg-gray-800">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-
-          {/* Overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/50 to-transparent"
-          >
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-2 rounded-lg bg-white/20 px-6 py-3 font-semibold text-white backdrop-blur-md transition-all hover:bg-white/30"
-            >
-              <Eye className="size-5" />
-              <span>Quick View</span>
-            </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Content Section */}
-        <div className="flex flex-1 flex-col justify-between space-y-4 p-5">
-          {/* Title & Description */}
-          <div className="space-y-2">
-            <h3 className="text-lg font-bold text-white transition-colors group-hover:text-blue-400">
-              {project.title}
-            </h3>
-            <p className="line-clamp-2 text-sm text-gray-400 transition-colors group-hover:text-gray-300">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech, idx) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.05 }}
-                className="rounded-full border border-blue-500/30 bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-3 py-1 text-xs font-medium text-blue-300 backdrop-blur-sm"
-              >
-                {tech}
-              </motion.span>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <div className="project-tags">
+            {project.technologies.slice(0, 4).map((tech) => (
+              <span key={tech}>{tech}</span>
             ))}
           </div>
-
-          {/* Action Button */}
-          {project.links.preview &&
-            (project.links.preview as string) !== '#' && (
-              <motion.a
-                href={project.links.preview}
+          <div className="project-actions">
+            {project.preview ? (
+              <a
+                href={project.preview}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ x: 4 }}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300"
               >
-                Visit Project
-                <span>→</span>
-              </motion.a>
+                {project.status === 'Live demo'
+                  ? 'Visit demo'
+                  : 'Visit website'}{' '}
+                <ArrowUpRight size={14} />
+              </a>
+            ) : (
+              <button onClick={() => setOpen(true)}>
+                About the project <ArrowUpRight size={14} />
+              </button>
             )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.title} source on GitHub`}
+              >
+                <Github size={14} />
+                <span>Source</span>
+              </a>
+            )}
+          </div>
         </div>
-
-        {/* Decorative Border Glow */}
-        <div className="absolute inset-0 -z-10 origin-center rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-purple-500/0 opacity-0 blur transition-opacity duration-300 group-hover:opacity-10" />
-      </motion.div>
-
-      {/* Image Modal */}
-      <ImageModal
-        isOpen={isModalOpen}
-        imageUrl={project.image}
-        title={project.title}
-        onClose={() => setIsModalOpen(false)}
-      />
+      </motion.article>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-h-[90dvh] w-[calc(100%-24px)] max-w-3xl overflow-y-auto rounded-2xl p-6 sm:p-8">
+          <div className="pr-10">
+            <p className="eyebrow mb-3 text-violet-400">
+              {project.category} · {project.status}
+            </p>
+            <DialogTitle className="font-heading text-3xl tracking-tight">
+              {project.title}
+            </DialogTitle>
+          </div>
+          <DialogDescription className="leading-relaxed">
+            {project.description}
+          </DialogDescription>
+          {hasImage && (
+            <Image
+              src={project.image!}
+              alt={`${project.title} full preview`}
+              width={1280}
+              height={800}
+              className="project-details-image"
+            />
+          )}
+          <div className="project-tags">
+            {project.technologies.map((tech) => (
+              <span key={tech}>{tech}</span>
+            ))}
+          </div>
+          <div className="project-notes">
+            <strong className="text-foreground mb-1 block">
+              About this showcase
+            </strong>
+            {project.notes}
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {project.preview && (
+              <a
+                className="gradient-button"
+                href={project.preview}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open {project.status === 'Live demo' ? 'demo' : 'website'}{' '}
+                <ArrowUpRight size={15} />
+              </a>
+            )}
+            {project.github && (
+              <a
+                className="outline-button"
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github size={15} /> View source
+              </a>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

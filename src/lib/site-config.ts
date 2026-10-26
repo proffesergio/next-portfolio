@@ -1,9 +1,9 @@
 import { env } from '@/env.mjs';
 
 export const siteConfig = {
-  title: 'Hossain Billal | Full-stack Developer',
+  title: 'Billal Hossain — Developer, Designer & Creative Maker',
   description:
-    "Hello, I'm Billal. I am Full-stack developer from Bangladesh. I enjoy building sites and apps. My focus is Python, NodeJS, React (Next.js).",
+    'Explore web apps, brand identities, and motion work by Billal Hossain, a full-stack developer and multidisciplinary designer based in Dhaka, Bangladesh.',
   keywords: [
     'Hossain Billal',
     'Front-end developer',
@@ -31,6 +31,6 @@ export const siteConfig = {
     'Programming',
     'Tech enthusiast',
   ],
-  url: env.SITE_URL || 'https://next-portfolio-ruby-nine.vercel.app/',
+  url: env.SITE_URL || 'https://billsbro.vercel.app',
   googleSiteVerificationId: env.GOOGLE_SITE_VERIFICATION_ID || '',
 };

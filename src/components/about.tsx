@@ -1,47 +1,77 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowUpRight, Clapperboard, Code2, Palette } from 'lucide-react';
 
-// import MySkills from '@/components/MySkills';
-import { SectionHeading } from '@/components/section-heading';
-import { Skills } from '@/components/skills';
 import { useSectionInView } from '@/hooks/use-section-in-view';
+
+const capabilities = [
+  {
+    icon: Code2,
+    title: 'Code that solves something',
+    description:
+      'Next.js, React, TypeScript, Python, Django, and Node.js. From a useful interface to the systems behind it.',
+  },
+  {
+    icon: Palette,
+    title: 'Design with a point of view',
+    description:
+      'Brand identities, digital experiences, and print design, shaped in Figma, Illustrator, and Photoshop.',
+  },
+  {
+    icon: Clapperboard,
+    title: 'Ideas in motion',
+    description:
+      'Animation, editing, and visual storytelling with After Effects and Premiere Pro.',
+  },
+];
 
 export const About = () => {
   const { ref } = useSectionInView('About');
-
   return (
-    <motion.section
-      ref={ref}
-      id="about"
-      className="my-10 flex w-full scroll-mt-28 flex-col items-center md:mb-20"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
-    >
-      <SectionHeading heading="About Me" />
-      <div className="-mt-5 max-w-2xl text-justify leading-7">
-        <p className="mb-4">
-          I&apos;m Md Billal Hossain, I&apos;m a full-stack developer from
-          Dhaka, Bangladesh. I&apos;ve been learning programming for over 4
-          years. After I started my bachelor journey, I decided to pursue my
-          passion for programming. My favorite part of programming is the
-          problem-solving aspect. I love the feeling of finally figuring out a
-          solution to a problem. I&apos;ve had the opportunity to work on
-          several exciting projects during my learning journey, ranging from
-          personal projects to collaborative ventures. My core stack is Python,
-          Django, Node JS, Typescript, React, Next.js, TypeScript, and Tailwind
-          CSS. I am also a professional Graphic Designer experting in Adobe
-          Photoshop, Illustrator, Adobe After Effects I&apos;m always learn new
-          technologies.
+    <section ref={ref} id="about" className="about-section">
+      <div className="about-copy">
+        <span className="eyebrow text-violet-400">
+          02 / The person behind the pixels
+        </span>
+        <h2>
+          Curious mind.
+          <br />
+          <span className="gradient-text">Many mediums.</span>
+        </h2>
+        <p>
+          I’m Billal, a full-stack developer and multidisciplinary designer
+          based in Dhaka, Bangladesh. I like making complicated things feel
+          simple, whether that’s a web application, a visual identity, or a
+          piece of motion design.
         </p>
         <p>
-          I&apos;m open to Freelance work opportunities where I can contribute,
-          learn and grow. If you have a good opportunity that matches my skills
-          and experience then don&apos;t hesitate to contact me.
+          My work spans commerce, community platforms, everyday tools, and
+          publication design. The common thread is a love of solving problems
+          and seeing an idea become something people can use.
         </p>
+        <a href="#contact" className="outline-button mt-3">
+          Have something in mind? <ArrowUpRight size={15} />
+        </a>
       </div>
-      <Skills />
-    </motion.section>
+      <div className="pt-3">
+        {capabilities.map(({ icon: Icon, title, description }, index) => (
+          <motion.div
+            key={title}
+            className="capability-card"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.08 }}
+            viewport={{ once: true }}
+          >
+            <Icon size={22} />
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };

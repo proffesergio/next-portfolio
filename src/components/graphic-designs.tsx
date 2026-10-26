@@ -46,7 +46,7 @@ export const GraphicDesigns = () => {
         viewport={{ once: true }}
       >
         <SectionHeading
-          heading="Static Graphic Designs"
+          heading="Graphic design"
           content="Brand identity, print, and document design work."
         />
       </motion.div>
@@ -57,13 +57,14 @@ export const GraphicDesigns = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.4 }}
         viewport={{ once: true }}
-        className="mb-8 flex flex-wrap justify-center gap-2"
+        className="mb-8 flex flex-wrap justify-start gap-2"
       >
         {allCategories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200"
+            className="filter-button"
+            aria-pressed={activeCategory === category}
           >
             {activeCategory === category && (
               <motion.span
@@ -76,7 +77,7 @@ export const GraphicDesigns = () => {
               className={`relative z-10 ${
                 activeCategory === category
                   ? 'text-white'
-                  : 'text-gray-400 hover:text-gray-200'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {category}
