@@ -7,6 +7,7 @@ import { Header } from '@/components/header';
 import { Intro } from '@/components/intro';
 import { MotionGraphics } from '@/components/motion-graphics';
 import { Projects } from '@/components/projects';
+import { WhatsAppChat } from '@/components/whatsapp-chat';
 
 export default function HomePage() {
   return (
@@ -37,6 +38,7 @@ export default function HomePage() {
         </div>
       </main>
       <Footer />
+      <WhatsAppChat />
     </>
   );
 }

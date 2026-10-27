@@ -11,6 +11,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { SocialContactLinks } from '@/components/social-contact-links';
 import { SpaceBackground } from '@/components/space-background';
 import { useSectionInView } from '@/hooks/use-section-in-view';
 
@@ -58,6 +59,7 @@ export const Intro = () => {
               </Link>
             </div>
             <div className="hero-socials">
+              <SocialContactLinks compact />
               <a
                 href="https://github.com/proffesergio"
                 target="_blank"

@@ -6,6 +6,7 @@ import { ArrowUpRight, Mail, Send } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { sendEmailAction } from '@/actions/send-email';
+import { SocialContactLinks } from '@/components/social-contact-links';
 import { useSectionInView } from '@/hooks/use-section-in-view';
 import { formSchema, TFormSchema } from '@/lib/form-schema';
 
@@ -43,6 +44,9 @@ export const Contact = () => {
           A new product, a fresh identity, or something a little unexpected. I’d
           love to hear what you’re thinking.
         </p>
+        <div className="mt-7 flex flex-wrap items-center gap-3">
+          <SocialContactLinks />
+        </div>
         <a
           href="mailto:bilal.hossai1@gmail.com"
           className="mt-7 inline-flex items-center gap-2 text-sm"
